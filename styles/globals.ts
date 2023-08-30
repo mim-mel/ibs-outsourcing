@@ -7,7 +7,7 @@ const global = css`
   }
 
   body {
-    font-family: 'SUIT', sans-serif;
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
   }
 `;
 
