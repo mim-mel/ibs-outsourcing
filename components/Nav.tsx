@@ -51,6 +51,7 @@ const Wrap = styled.div<Props>`
     props.isScrolled ? '1px solid #dbdbdb' : '1px solid white'};
   background-color: ${props => (props.isScrolled ? 'white' : '')};
   transition: 0.2s;
+  z-index: 100;
 `;
 
 const Wrap2 = styled.div`
@@ -64,6 +65,7 @@ const Wrap2 = styled.div`
 
 const Logo = styled.img`
   margin-bottom: 5px;
+  cursor: pointer;
 `;
 
 const TitleWrap = styled.div`
@@ -76,6 +78,7 @@ const Title = styled.div<Props>`
   font-size: 18px;
   font-weight: ${props => (props.isScrolled ? '500' : '400')};
   margin: 0 35px;
+  cursor: pointer;
 `;
 
 const Button = styled.div<Props>`
@@ -85,6 +88,7 @@ const Button = styled.div<Props>`
   font-size: 18px;
   font-weight: ${props => (props.isScrolled ? '400' : '700')};
   padding: 13px 28px;
+  cursor: pointer;
 `;
 
 export default Nav;
