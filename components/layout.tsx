@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import Nav from './Nav';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 const Layout = (props: { children: React.ReactNode }) => {
   return (
     <Wrap>
       <Nav />
       {props.children}
-      {/* <Footer /> */}
+      <Footer />
     </Wrap>
   );
 };
