@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import styled from '@emotion/styled';
 import Layout from '../components/Layout';
+import Mail from '../components/Mail';
 
 const Main: NextPage = () => {
   return (
@@ -59,14 +60,14 @@ const Main: NextPage = () => {
               위하고 등의 프로그램을 사용하여 기장,
               <br /> 계산서 발행 등의 업무 수행
             </Content2BoxText>
-            <Content2BoxImg src='/image/content2-img1.png' />
+            <Content2BoxImg isShorter src='/image/content2-img1.png' />
           </Content2Box>
           <Content2Box>
             <Content2BoxTitle>세무 컨설팅</Content2BoxTitle>
             <Content2BoxText>
               현장 방문을 통한 병원 비용구조 파악 및<br /> 세무관리
             </Content2BoxText>
-            <Content2BoxImg src='/image/content2-img2.png' />
+            <Content2BoxImg isShorter src='/image/content2-img2.png' />
           </Content2Box>
           <Content2Box>
             <Content2BoxTitle>인사, 행정</Content2BoxTitle>
@@ -202,6 +203,8 @@ const Main: NextPage = () => {
           <Content5Box left='13%'>
             <Content5Partners
               height='60px'
+              ipadHeight='38px'
+              mobileHeight='19px'
               src='/image/content5-partner1.png'
             />
           </Content5Box>
@@ -209,6 +212,8 @@ const Main: NextPage = () => {
           <Content5Box left='55%'>
             <Content5Partners
               height='45px'
+              ipadHeight='27px'
+              mobileHeight='15px'
               src='/image/content5-partner2.png'
             />
           </Content5Box>
@@ -216,6 +221,8 @@ const Main: NextPage = () => {
           <Content5Box top='40%' left='3%'>
             <Content5Partners
               height='55px'
+              ipadHeight='35px'
+              mobileHeight='18px'
               src='/image/content5-partner3.png'
             />
           </Content5Box>
@@ -223,6 +230,8 @@ const Main: NextPage = () => {
           <Content5Box top='40%' left='66%'>
             <Content5Partners
               height='68px'
+              ipadHeight='40px'
+              mobileHeight='19px'
               src='/image/content5-partner4.png'
             />
           </Content5Box>
@@ -230,6 +239,8 @@ const Main: NextPage = () => {
           <Content5Box top='81.7%' left='13%'>
             <Content5Partners
               height='50px'
+              ipadHeight='30px'
+              mobileHeight='16px'
               src='/image/content5-partner5.png'
             />
           </Content5Box>
@@ -237,76 +248,26 @@ const Main: NextPage = () => {
           <Content5Box top='81.7%' left='55%'>
             <Content5Partners
               height='55px'
+              ipadHeight='34px'
+              mobileHeight='17px'
               src='/image/content5-partner6.png'
             />
           </Content5Box>
         </Content5Wrap>
       </ContentWrap>
-
-      <Content6Wrap>
-        <Content6Title>MSO법인 문의하기</Content6Title>
-        <Content6BoxWrap>
-          <Content6Box1>
-            <Content6MiniBoxWrap>
-              <Content6InputNameWrap>
-                <Content6Input1 />
-                <Content6InputName>병원명</Content6InputName>
-              </Content6InputNameWrap>
-              <Content6InputNameWrap>
-                <Content6Input1 />
-                <Content6InputName>이메일</Content6InputName>
-              </Content6InputNameWrap>
-            </Content6MiniBoxWrap>
-            <Content6MiniBoxWrap>
-              <Content6InputNameWrap>
-                <Content6Input1 />
-                <Content6InputName>성함</Content6InputName>
-              </Content6InputNameWrap>
-              <Content6InputNameWrap>
-                <Content6Input1 />
-                <Content6InputName>연락처</Content6InputName>
-              </Content6InputNameWrap>
-            </Content6MiniBoxWrap>
-            <Content6InputNameWrap>
-              <Content6Input2 />
-              <Content6InputName>문의 내용</Content6InputName>
-            </Content6InputNameWrap>
-          </Content6Box1>
-          <Content6TextWrap>
-            <Content6Text1>개인정보 수집 및 이용 동의</Content6Text1>
-            <Content6Text2>
-              IBS & AH Corporation은 귀하의 개인정보를 중요시하며,
-              <br />
-              개인정보보호에 관한 법률을 준수하고 있습니다.
-            </Content6Text2>
-            <Content6Text2>
-              개인정보 수집 항목: 이름, 연락처, 이메일
-              <br />
-              개인정보 수집 및 이용 목적: 문의에 대한 확인
-              <br />및 회신 개인정보 보유 및 이용 기간: 수집 및 이용 목적 달성
-              시까지 보유하며
-              <br />
-              해당 목적이 달성되면 파기됩니다.
-            </Content6Text2>
-            <Content6Agree>
-              <CheckBox type='checkbox' />
-              <CheckBoxText>
-                [필수] 개인정보 수집 및 이용에 동의합니다.
-              </CheckBoxText>
-            </Content6Agree>
-          </Content6TextWrap>
-        </Content6BoxWrap>
-        <Content6Button>MSO법인 문의하기</Content6Button>
-      </Content6Wrap>
+      <Mail />
     </Layout>
   );
 };
 
 interface Props {
   isMarginBottomNone?: boolean;
+  isShorter?: boolean;
   top?: string;
   left?: string;
   height?: string;
+  ipadHeight?: string;
+  mobileHeight?: string;
 }
 
 const MainImgWrap = styled.div`
@@ -315,16 +276,45 @@ const MainImgWrap = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 130px;
+
+  @media screen and (max-width: 1024px) {
+    height: 590px;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+
+  @media screen and (max-width: 760px) {
+    margin-bottom: 40px;
+  }
 `;
 
 const MainImg = styled.img`
   width: 100%;
   height: 100vh;
+
+  @media screen and (max-width: 1024px) {
+    height: auto;
+  }
+
+  @media screen and (max-width: 760px) {
+    height: 590px;
+    width: auto;
+    position: relative;
+    left: 200px;
+  }
 `;
 
 const MainImgBox = styled.div`
   position: absolute;
   width: 1420px;
+
+  @media screen and (max-width: 1024px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 350px;
+  }
 `;
 
 const MainImgTitle = styled.h1`
@@ -332,6 +322,17 @@ const MainImgTitle = styled.h1`
   font-size: 70px;
   font-weight: 700;
   margin-bottom: 23px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 40px;
+    margin-bottom: 18px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
 `;
 
 const MainImgText = styled.div`
@@ -340,6 +341,20 @@ const MainImgText = styled.div`
   font-weight: 400;
   line-height: 59px;
   margin-bottom: 70px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 24px;
+    line-height: 38px;
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
 `;
 
 const MainImgButton = styled.div`
@@ -353,6 +368,13 @@ const MainImgButton = styled.div`
   font-size: 20px;
   color: #fff;
   font-weight: 400;
+
+  @media screen and (max-width: 760px) {
+    width: 200px;
+    height: 45px;
+    margin: 0 auto;
+    font-size: 16px;
+  }
 `;
 
 const ScrollWrap = styled.div`
@@ -364,6 +386,14 @@ const ScrollWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 1024px) {
+    top: 80%;
+  }
+
+  @media screen and (max-width: 760px) {
+    top: 92%;
+  }
 `;
 
 const ScrollText = styled.div`
@@ -371,13 +401,30 @@ const ScrollText = styled.div`
   font-size: 18px;
   font-weight: 400;
   margin-bottom: 7px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 13px;
+    margin-bottom: 0px;
+  }
 `;
 
-const ScrollIcon = styled.img``;
+const ScrollIcon = styled.img`
+  @media screen and (max-width: 1024px) {
+    width: 20px;
+  }
+`;
 
 const ContentWrap = styled.div`
   width: 1420px;
   margin: 0 auto;
+
+  @media screen and (max-width: 1024px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 350px;
+  }
 `;
 
 const Content1Title = styled.h2`
@@ -390,6 +437,16 @@ const Content1Title = styled.h2`
   span {
     color: #1c1c1c;
   }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 36px;
+    margin-bottom: 13px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
 `;
 
 const Content1Text1 = styled.div`
@@ -398,6 +455,16 @@ const Content1Text1 = styled.div`
   font-size: 28px;
   font-weight: 400;
   margin-bottom: 50px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
 `;
 
 const Content1Box = styled.div`
@@ -408,15 +475,45 @@ const Content1Box = styled.div`
   padding: 74px 206px;
   box-sizing: border-box;
   margin-bottom: 70px;
+
+  @media screen and (max-width: 1024px) {
+    width: 700px;
+    height: 580px;
+    padding: 50px 0;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 319px;
+    height: 530px;
+    padding: 40px 0;
+    border-radius: 20px;
+    margin: 0 auto 30px auto;
+  }
 `;
 
 const Content1BoxWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
-const Content1BoxImg = styled.img``;
+const Content1BoxImg = styled.img`
+  @media screen and (max-width: 1024px) {
+    width: 230px;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 164px;
+    margin-bottom: 30px;
+  }
+`;
 
 const Content1BoxTitle = styled.h3`
   color: #1c1c1c;
@@ -427,6 +524,17 @@ const Content1BoxTitle = styled.h3`
   span {
     color: #1c459b;
   }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 18px;
+    margin-bottom: 13px;
+  }
 `;
 
 const Content1BoxText = styled.div`
@@ -435,6 +543,19 @@ const Content1BoxText = styled.div`
   font-weight: 400;
   line-height: 32px;
   width: 585px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
+    text-align: center;
+    line-height: 26px;
+    width: 500px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 14px;
+    line-height: 25px;
+    width: 287px;
+  }
 `;
 
 const Content1Text2 = styled.h3`
@@ -447,6 +568,18 @@ const Content1Text2 = styled.h3`
   span {
     color: #1c459b;
   }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 24px;
+    margin-bottom: 70px;
+    line-height: 40px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 60px;
+  }
 `;
 
 const Content2Title = styled.div`
@@ -455,6 +588,15 @@ const Content2Title = styled.div`
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 50px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 34px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 `;
 
 const Content2Wrap = styled.div`
@@ -463,6 +605,19 @@ const Content2Wrap = styled.div`
   grid-template-columns: 24% 24% 24% 24%;
   justify-content: space-between;
   margin-bottom: 200px;
+
+  @media screen and (max-width: 1024px) {
+    width: 700px;
+    grid-template-columns: 48% 48%;
+    grid-gap: 20px;
+    margin-bottom: 80px;
+  }
+
+  @media screen and (max-width: 760px) {
+    grid-template-columns: 100%;
+    width: 319px;
+    margin: 0 auto 60px auto;
+  }
 `;
 
 const Content2Box = styled.div`
@@ -473,6 +628,20 @@ const Content2Box = styled.div`
   position: relative;
   padding: 52px 30px;
   box-sizing: border-box;
+
+  @media screen and (max-width: 1024px) {
+    height: 250px;
+    padding: 40px 30px;
+  }
+
+  @media screen and (max-width: 760px) {
+    height: 232px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Content2BoxTitle = styled.div`
@@ -480,6 +649,16 @@ const Content2BoxTitle = styled.div`
   font-size: 33px;
   font-weight: 700;
   margin-bottom: 15px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 20px;
+    margin-top: 60px;
+  }
 `;
 
 const Content2BoxText = styled.div`
@@ -487,13 +666,34 @@ const Content2BoxText = styled.div`
   font-size: 17px;
   font-weight: 400;
   line-height: 26px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  @media screen and (max-width: 760px) {
+    text-align: center;
+    font-size: 15px;
+    width: 250px;
+  }
 `;
 
-const Content2BoxImg = styled.img`
+const Content2BoxImg = styled.img<Props>`
   position: absolute;
   left: 91%;
   top: 90%;
   transform: translate(-100%, -100%);
+
+  @media screen and (max-width: 1024px) {
+    width: 60px;
+  }
+
+  @media screen and (max-width: 760px) {
+    left: 50%;
+    top: ${props => (props.isShorter ? '40%' : '34%')};
+    transform: translate(-50%, -100%);
+  }
 `;
 
 const Content3Wrap = styled.div`
@@ -502,6 +702,16 @@ const Content3Wrap = styled.div`
   box-sizing: border-box;
   background-color: #1c459b;
   margin-bottom: 200px;
+
+  @media screen and (max-width: 1024px) {
+    padding: 70px 0;
+    margin-bottom: 80px;
+  }
+
+  @media screen and (max-width: 760px) {
+    padding: 50px 0;
+    margin-bottom: 60px;
+  }
 `;
 
 const Content3Title = styled.div`
@@ -509,6 +719,16 @@ const Content3Title = styled.div`
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 17px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 34px;
+    text-align: center;
+    width: 350px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 24px;
+  }
 `;
 
 const Content3Text = styled.div`
@@ -517,6 +737,20 @@ const Content3Text = styled.div`
   font-weight: 300;
   line-height: 44px;
   width: 508px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    width: 327px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 15px;
+    width: 272px;
+  }
 `;
 
 const Content3Box = styled.div`
@@ -524,6 +758,14 @@ const Content3Box = styled.div`
   width: 612px;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 1024px) {
+    width: 580px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 310px;
+  }
 `;
 
 const Content3Line = styled.div`
@@ -531,6 +773,14 @@ const Content3Line = styled.div`
   height: 465px;
   background-color: #fff;
   position: relative;
+
+  @media screen and (max-width: 1024px) {
+    height: 420px;
+  }
+
+  @media screen and (max-width: 760px) {
+    height: 230px;
+  }
 `;
 
 const Content3Round = styled.div<Props>`
@@ -542,10 +792,25 @@ const Content3Round = styled.div<Props>`
   top: ${props => props.top};
   background-color: #1c459b;
   left: -8px;
+
+  @media screen and (max-width: 760px) {
+    width: 8px;
+    height: 8px;
+    border: 2px solid #fff;
+    left: -5px;
+  }
 `;
 
 const Content3IconBoxWrap = styled.div`
   margin-left: 75px;
+
+  @media screen and (max-width: 1024px) {
+    margin-left: 35px;
+  }
+
+  @media screen and (max-width: 760px) {
+    margin-left: 20px;
+  }
 `;
 
 const Content3IconBox = styled.div<Props>`
@@ -555,10 +820,25 @@ const Content3IconBox = styled.div<Props>`
   display: flex;
   margin-bottom: ${props => (props.isMarginBottomNone ? '' : '40px')};
   align-items: center;
+
+  @media screen and (max-width: 1024px) {
+    margin-bottom: ${props => (props.isMarginBottomNone ? '' : '25px')};
+    padding: 29px 55px;
+  }
+
+  @media screen and (max-width: 760px) {
+    padding: 12px 20px;
+    margin-bottom: ${props => (props.isMarginBottomNone ? '' : '15px')};
+  }
 `;
 
 const Content3Icon = styled.img`
   margin-right: 25px;
+
+  @media screen and (max-width: 760px) {
+    width: 28px;
+    margin-right: 15px;
+  }
 `;
 
 const Content3IconText = styled.div`
@@ -566,6 +846,11 @@ const Content3IconText = styled.div`
   font-size: 24px;
   font-weight: 500;
   line-height: 37px;
+
+  @media screen and (max-width: 760px) {
+    font-size: 14px;
+    line-height: 23px;
+  }
 `;
 
 const Content4Title = styled.div`
@@ -578,6 +863,16 @@ const Content4Title = styled.div`
   span {
     color: #1c459b;
   }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 34px;
+    margin-bottom: 12px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
 `;
 
 const Content4Text = styled.div`
@@ -587,6 +882,17 @@ const Content4Text = styled.div`
   font-weight: 400;
   text-align: center;
   margin-bottom: 70px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+    margin-bottom: 35px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 15px;
+    margin: 0 auto 25px auto;
+    width: 309px;
+  }
 `;
 
 const Content4BoxWrap = styled.div`
@@ -595,6 +901,16 @@ const Content4BoxWrap = styled.div`
   justify-content: space-between;
   grid-gap: 27px;
   margin-bottom: 200px;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 48% 48%;
+    margin-bottom: 80px;
+  }
+
+  @media screen and (max-width: 760px) {
+    grid-template-columns: 100%;
+    margin-bottom: 70px;
+  }
 `;
 
 const Content4Box = styled.div`
@@ -608,10 +924,35 @@ const Content4Box = styled.div`
   align-items: center;
   width: 100%;
   height: 256px;
+
+  @media screen and (max-width: 1024px) {
+    height: 210px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 319px;
+    height: 88px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 10% 80%;
+    justify-content: space-between;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    align-items: center;
+  }
 `;
 
 const Content4BoxImg = styled.img`
   margin-bottom: 24px;
+
+  @media screen and (max-width: 1024px) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 36px;
+    margin: 0;
+  }
 `;
 
 const Content4BoxText = styled.div`
@@ -620,6 +961,18 @@ const Content4BoxText = styled.div`
   font-size: 20px;
   font-weight: 500;
   line-height: 33px;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  @media screen and (max-width: 760px) {
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    text-align: left;
+  }
 `;
 
 const Content5Wrap = styled.div`
@@ -627,6 +980,18 @@ const Content5Wrap = styled.div`
   height: 630px;
   margin: 30px auto 200px auto;
   position: relative;
+
+  @media screen and (max-width: 1024px) {
+    width: 680px;
+    height: 350px;
+    margin: 60px auto 100px auto;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 340px;
+    height: 180px;
+    margin: 60px auto 80px auto;
+  }
 `;
 
 const Content5Round1 = styled.div`
@@ -638,6 +1003,16 @@ const Content5Round1 = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media screen and (max-width: 1024px) {
+    width: 288px;
+    height: 288px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 148px;
+    height: 148px;
+  }
 `;
 
 const Content5Round2 = styled.div`
@@ -649,6 +1024,16 @@ const Content5Round2 = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media screen and (max-width: 1024px) {
+    width: 125px;
+    height: 125px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 64px;
+    height: 64px;
+  }
 `;
 
 const Content5Logo = styled.img`
@@ -656,6 +1041,14 @@ const Content5Logo = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media screen and (max-width: 1024px) {
+    width: 78px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 40px;
+  }
 `;
 
 const Content5Box = styled.div<Props>`
@@ -670,165 +1063,30 @@ const Content5Box = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 1024px) {
+    width: 214px;
+    height: 60px;
+    border-radius: 10px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 110px;
+    height: 30px;
+  }
 `;
 
 const Content5Partners = styled.img<Props>`
   opacity: 0.6;
   height: ${props => props.height};
-`;
 
-const Content6Wrap = styled.div`
-  width: 100%;
-  padding: 100px 419px;
-  background: #1c459b;
-  box-sizing: border-box;
-`;
-
-const Content6Title = styled.div`
-  color: #fff;
-  font-size: 48px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 80px;
-`;
-
-const Content6BoxWrap = styled.div`
-  display: grid;
-  grid-template-columns: 49% 49%;
-  justify-content: space-between;
-`;
-
-const Content6Box1 = styled.div`
-  width: 100%;
-  display: block;
-`;
-
-const Content6MiniBoxWrap = styled.div`
-  display: grid;
-  grid-template-columns: 48% 48%;
-  margin-bottom: 45px;
-  justify-content: space-between;
-`;
-
-const Content6InputNameWrap = styled.div`
-  position: relative;
-`;
-
-const Content6Input1 = styled.input`
-  width: 100%;
-  height: 50px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(238, 243, 255, 0.15);
-  padding: 15px;
-  box-sizing: border-box;
-  color: white;
-  font-size: 18px;
-
-  :focus {
-    outline: none;
+  @media screen and (max-width: 1024px) {
+    height: ${props => props.ipadHeight};
   }
-`;
-
-const Content6Input2 = styled.textarea`
-  width: 100%;
-  height: 135px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(238, 243, 255, 0.15);
-  padding: 15px;
-  box-sizing: border-box;
-  color: white;
-  font-size: 18px;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-  font-weight: 300;
-
-  :focus {
-    outline: none;
-  }
-`;
-
-const Content6InputName = styled.div`
-  position: absolute;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 300;
-  top: -32px;
-  left: 2px;
-`;
-
-const Content6TextWrap = styled.div`
-  width: 100%;
-  height: 324px;
-  padding: 30px 20px;
-  box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(238, 243, 255, 0.15);
-  border-radius: 10px;
-  position: relative;
-`;
-
-const Content6Text1 = styled.div`
-  color: #fff;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 26px;
-  margin-bottom: 25px;
-`;
-
-const Content6Text2 = styled.div`
-  color: #fff;
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 26px;
-  margin-bottom: 25px;
-`;
-
-const Content6Agree = styled.div`
-  position: absolute;
-  display: flex;
-  top: 104%;
-  left: 2px;
-`;
-
-const CheckBox = styled.input`
-  height: 20px;
-  width: 20px;
-  color: #787878;
-  cursor: pointer;
-  margin-right: 2px;
-  margin-top: 2px;
-  border-radius: 2px;
 
   @media screen and (max-width: 760px) {
-    width: 15px;
+    height: ${props => props.mobileHeight};
   }
-`;
-
-const CheckBoxText = styled.div`
-  color: #fff;
-  margin-left: 7px;
-  font-size: 15px;
-  font-weight: 300;
-
-  @media screen and (max-width: 760px) {
-    font-size: 15px;
-  }
-`;
-
-const Content6Button = styled.div`
-  width: 100%;
-  border-radius: 10px;
-  background: #fff;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin-top: 75px;
-  font-size: 20px;
-  color: #1c459b;
-  font-weight: 700;
 `;
 
 export default Main;

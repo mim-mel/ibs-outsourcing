@@ -76,7 +76,7 @@ const Title = styled.div<Props>`
   cursor: pointer;
 
   @media screen and (max-width: 760px) {
-    font-size: 15px;
+    font-size: 14px;
   }
 `;
 
