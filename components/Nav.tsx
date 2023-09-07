@@ -1,13 +1,29 @@
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState, RefObject } from 'react';
 
-const Nav = () => {
+interface NavProps {
+  sectionRefs: RefObject<HTMLElement>[];
+}
+
+const Nav = ({ sectionRefs }: NavProps) => {
   const [ScrollY, setScrollY] = useState(0);
   const [IsScrolled, setIsScrolled] = useState(false);
   const [IsMenuOpen, setIsMenuOpen] = useState(false);
 
   const updateScroll = () => {
     setScrollY(window.scrollY || document.documentElement.scrollTop);
+  };
+
+  //스크롤 위치 변경
+  const scrollToSection = (ref: RefObject<HTMLElement>) => {
+    if (ref.current) {
+      window.scrollTo({
+        top: ref.current.offsetTop - 80,
+        behavior: 'smooth',
+      });
+    }
+
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -29,21 +45,44 @@ const Nav = () => {
         )}
         <Logo2 src='/image/nav-logo.png' />
         <TitleWrap isMenuOpen={IsMenuOpen}>
-          <Title isMenuOpen={IsMenuOpen} isScrolled={IsScrolled}>
+          <Title
+            isMenuOpen={IsMenuOpen}
+            isScrolled={IsScrolled}
+            onClick={() => scrollToSection(sectionRefs[0])}
+          >
             회사 소개
           </Title>
-          <Title isMenuOpen={IsMenuOpen} isScrolled={IsScrolled}>
+          <Title
+            isMenuOpen={IsMenuOpen}
+            isScrolled={IsScrolled}
+            onClick={() => scrollToSection(sectionRefs[1])}
+          >
             서비스 소개
           </Title>
-          <Title isMenuOpen={IsMenuOpen} isScrolled={IsScrolled}>
+          <Title
+            isMenuOpen={IsMenuOpen}
+            isScrolled={IsScrolled}
+            onClick={() => scrollToSection(sectionRefs[2])}
+          >
             업무 프로세스
           </Title>
-          <Title isMenuOpen={IsMenuOpen} isScrolled={IsScrolled}>
+          <Title
+            isMenuOpen={IsMenuOpen}
+            isScrolled={IsScrolled}
+            onClick={() => scrollToSection(sectionRefs[3])}
+          >
             협력사
           </Title>
-          <Button2>MSO법인 문의하기</Button2>
+          <Button2 onClick={() => scrollToSection(sectionRefs[4])}>
+            MSO법인 문의하기
+          </Button2>
         </TitleWrap>
-        <Button isScrolled={IsScrolled}>MSO법인 문의하기</Button>
+        <Button
+          isScrolled={IsScrolled}
+          onClick={() => scrollToSection(sectionRefs[4])}
+        >
+          MSO법인 문의하기
+        </Button>
         {IsMenuOpen ? (
           <MobileLogo
             src='/image/x-mark.png'

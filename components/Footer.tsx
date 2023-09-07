@@ -1,13 +1,40 @@
 import styled from '@emotion/styled';
-const Footer = () => {
+import React, { RefObject } from 'react';
+
+interface NavProps {
+  sectionRefs: RefObject<HTMLElement>[];
+}
+
+const Footer = ({ sectionRefs }: NavProps) => {
+  //스크롤 위치 변경
+  const scrollToSection = (ref: RefObject<HTMLElement>) => {
+    if (ref.current) {
+      window.scrollTo({
+        top: ref.current.offsetTop - 80,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <Wrap>
       <TitleWrap>
         <TitleBox>
-          <Title>회사 소개</Title>
-          <Title>서비스 소개</Title>
-          <Title>업무 프로세스</Title>
-          <Title isMarginRightNone>협력사</Title>
+          <Title onClick={() => scrollToSection(sectionRefs[0])}>
+            회사 소개
+          </Title>
+          <Title onClick={() => scrollToSection(sectionRefs[1])}>
+            서비스 소개
+          </Title>
+          <Title onClick={() => scrollToSection(sectionRefs[2])}>
+            업무 프로세스
+          </Title>
+          <Title
+            isMarginRightNone
+            onClick={() => scrollToSection(sectionRefs[3])}
+          >
+            협력사
+          </Title>
         </TitleBox>
       </TitleWrap>
       <ContentWrap>
@@ -33,7 +60,7 @@ const Footer = () => {
         </TextWrap>
         <NumberWrap>
           <NumberText>MSO법인 전화상담</NumberText>
-          <Number>02-6951-332</Number>
+          <Number>02-6951-3323</Number>
         </NumberWrap>
       </ContentWrap>
     </Wrap>
